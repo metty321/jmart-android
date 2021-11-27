@@ -63,7 +63,8 @@
         android:hint="Don't have account?"
         android:padding="5px"
 
-        android:textColorHint="#4b6bc8" />
+        android:textColorHint="#4b6bc8"
+        android:background="@null"/>
 
     <EditText
         android:id="@+id/signupnow"
@@ -78,5 +79,6 @@
         android:hint="Register now!"
         android:padding="2px"
         android:textColor="#4b6bc8"
-        android:textColorHint="#4b6bc8" />
+        android:textColorHint="#4b6bc8"
+        android:background="@null"/>
 </RelativeLayout>
