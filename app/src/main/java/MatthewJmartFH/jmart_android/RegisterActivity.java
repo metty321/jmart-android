@@ -32,27 +32,30 @@ public class RegisterActivity extends AppCompatActivity {
         EditText email = findViewById(R.id.email2);
         EditText password = findViewById(R.id.password2);
         TextView signIn = findViewById(R.id.signin2);
-        Button register = findViewById(R.id.regbtn);
+        Button regbtn =findViewById(R.id.regbtn);
 
-        register.setOnClickListener(new View.OnClickListener() {
+        regbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Response.Listener<String>listener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try{
+                            System.out.println(response);
                             JSONObject obj = new JSONObject(response);
                             if(obj != null)
                             {
                                 Toast.makeText(RegisterActivity.this,"Register Success",
                                         Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
+                                Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
                                 startActivity(intent);
                             }
+
 
                         }
                         catch(JSONException e){
                             e.printStackTrace();
+                            System.out.println("input invalid!");
                             Toast.makeText(RegisterActivity.this,"Register Error",
                                     Toast.LENGTH_SHORT).show();
                         }
