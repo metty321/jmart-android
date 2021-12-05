@@ -49,10 +49,12 @@ public class LoginActivity extends AppCompatActivity {
                 Response.Listener<String>listener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
                         try{
                             JSONObject obj = new JSONObject(response);
                             if(obj != null)
                             {
+
                                 Toast.makeText(LoginActivity.this,"Login Success",
                                         Toast.LENGTH_SHORT).show();
                                 loggedAccount = gson.fromJson(obj.toString(),Account.class);
@@ -65,6 +67,8 @@ public class LoginActivity extends AppCompatActivity {
                             e.printStackTrace();
                             Toast.makeText(LoginActivity.this,"Login Error",
                                     Toast.LENGTH_SHORT).show();
+                                
+
                         }
                     }
                 };

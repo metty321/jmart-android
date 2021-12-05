@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">jmart-android</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="tab_1">Hello blank fragment</string>
+    <string name="tab_2">Hello blank fragment</string>
+    <string name="lowest_tag">Lowest Price</string>
+    <string name="highest_tag">Highest Price</string>
+    <string name="new_tag">New</string>
+    <string name="used_tag">Used</string>
+
+    <string-array name="product_category">
+        <item>BOOK</item>
+        <item>GAME</item>
+        <item>ELECTRONIC</item>
+    </string-array>
 </resources>

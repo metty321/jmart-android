@@ -23,7 +23,7 @@
         android:id="@+id/name2"
         android:layout_below="@id/signin2"
         android:hint="Name"
-        android:textColor="#b3b3b3"
+        android:textColor="@color/black"
         android:textColorHint="#b3b3b3"
         android:layout_margin="10dp"
 
@@ -34,7 +34,7 @@
         android:id="@+id/email2"
         android:layout_below="@id/name2"
         android:hint="Email"
-        android:textColor="#b3b3b3"
+        android:textColor="@color/black"
         android:textColorHint="#b3b3b3"
         android:layout_margin="10dp"
         android:padding="20dp"/>
@@ -44,7 +44,7 @@
         android:id="@+id/password2"
         android:layout_below="@id/email2"
         android:hint="Password"
-        android:textColor="#b3b3b3"
+        android:textColor="@color/black"
         android:textColorHint="#b3b3b3"
         android:layout_margin="10dp"
         android:padding="20dp"
