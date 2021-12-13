@@ -1,5 +1,6 @@
 package MatthewJmartFH.jmart_android;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,12 +15,23 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ProductFragment#newInstance} factory method to
  * create an instance of this fragment.
+ * implements AdapterView.OnItemClickListener
  */
-public class ProductFragment extends Fragment implements AdapterView.OnItemClickListener {
+public class ProductFragment extends Fragment implements AdapterView.OnItemClickListener{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -74,11 +86,51 @@ public class ProductFragment extends Fragment implements AdapterView.OnItemClick
         String[] product = {"Chitato Chocolatos","Rexus Ubuntu","Philips GTX","Windows Premium",
                 "Sharp Sharp","Redmi Rexus","LG lG","Macintosh LG","Cimory Paseo","Sades Monde","Nokia Paseo","Pilot Tupperware","LG Philips"};
 
+
+
         ListView listView = (ListView) view.findViewById(R.id.list_view);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_list_item_1,product);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
+        
+//        ListView listView = (ListView) view.findViewById(R.id.list_view);
+//        ArrayList arrayList = new ArrayList<>();
+//        String jsonString =loadJSONFromAsset();
+//
+//        try{
+//            JSONObject obj = new JSONObject(loadJSONFromAsset);
+//            JSONArray array= obj.getJSONArray("name");
+//
+//            for(int i = 0;i < array.length(); i++)
+//            {
+//                JSONObject jsonObject = array.getJSONObject(i);
+//                String accountId = jsonObject.getString("accountId");
+//                String category  = jsonObject.getString("category");
+//                String conditionUsed = jsonObject.getString("conditionUsed");
+//                String discount  = jsonObject.getString("discount");
+//                String price = jsonObject.getString("price");
+//                String name  = jsonObject.getString("name");
+//                String shipmentPlans  = jsonObject.getString("shipmentPlans");
+//                String weight  = jsonObject.getString("weight");
+//
+//                itemModel model = new itemModel();
+//                model.setName(name);
+//                model.setId(accountId);
+//                model.setCategory(category);
+//                model.setCondition(conditionUsed);
+//                model.setPrice(price);
+//                model.setDiscount(discount);
+//                model.setWeight(weight);
+//                model.setShipmentPlans(shipmentPlans);
+//                arrayList.add(model);
+//            }
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//
+//        CustomAdapter adapter =new CustomAdapter(getContext(),arrayList);
+//        listView.setAdapter(adapter);
     }
 
 
@@ -90,4 +142,8 @@ public class ProductFragment extends Fragment implements AdapterView.OnItemClick
                 Toast.makeText(getActivity(),"Chitato Chocolatos",Toast.LENGTH_SHORT).show();
             }
     }
+
+
+
+
 }

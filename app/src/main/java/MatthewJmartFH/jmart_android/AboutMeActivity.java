@@ -21,6 +21,7 @@ import org.json.JSONObject;
 
 import MatthewJmartFH.jmart_android.model.Account;
 import MatthewJmartFH.jmart_android.request.CreateStoreRequest;
+import MatthewJmartFH.jmart_android.request.TopUpRequest;
 
 public class AboutMeActivity extends AppCompatActivity {
 
@@ -28,84 +29,159 @@ public class AboutMeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_me);
+
         Account loggedAccount = LoginActivity.getLoggedAccount();
 
-        //1st Cardview
-        TextView topUpBalance = findViewById(R.id.balance_value);
+        //Card View 1
+        TextView registered_name  = findViewById(R.id.name_value);
+        registered_name.setText(loggedAccount.name);
+        TextView registered_email = findViewById(R.id.email_value);
+        registered_email.setText(loggedAccount.email);
+        TextView topUpBalance     = findViewById(R.id.balance_value);
         topUpBalance.setText(String.valueOf(loggedAccount.balance));
-        TextView preview_name = findViewById(R.id.name_value);
-        preview_name.setText(loggedAccount.name);
-        TextView preview_email = findViewById(R.id.email_value);
-        preview_email.setText(loggedAccount.email);
+
+        CardView register_card = findViewById(R.id.card_view_2);
+        CardView info_card     = findViewById(R.id.card_view_3);
+        Button openreg_button  = findViewById(R.id.button);
+        Button register_button = findViewById(R.id.regBtn);
+        Button cancel_button   = findViewById(R.id.cancelBtn);
 
 
-        //2st CardView
-        CardView registerPage = findViewById(R.id.card_view_2);
-        TextView registerName = findViewById(R.id.Name_register);
-        registerName.setText(loggedAccount.store.name);
-        TextView registerAddress = findViewById(R.id.address_register);
-         registerAddress.setText(loggedAccount.store.address);
-         TextView registerPhone = findViewById(R.id.phone_register);
-         registerPhone.setText((loggedAccount.store.phoneNumber));
-         //
 
-        //3rd cardview
-        CardView viewAccount= findViewById(R.id.card_view_3);
+        //balance
+        TextView balance_value = findViewById(R.id.balance_value);
+        balance_value.setText(String.valueOf(loggedAccount.balance));
+        Button topUp_btn       = findViewById(R.id.TopUp_btn);
 
 
-        Button register_btn = findViewById(R.id.button);
-        if(loggedAccount.store == null)
+
+
+        if((loggedAccount.store == null))
         {
-            register_btn.setVisibility(View.VISIBLE);
+            openreg_button.setVisibility(View.VISIBLE);
 
         }
+
         else
         {
-            viewAccount.setVisibility(View.VISIBLE);
-            TextView show_name = findViewById(R.id.store_name_value);
-            TextView show_address = findViewById(R.id.address_value);
-            TextView show_phone = findViewById(R.id.phone_value);
-            show_name.setText(loggedAccount.store.name);
-            show_address.setText(loggedAccount.store.address);
-            show_phone.setText(loggedAccount.store.phoneNumber);
-
+            info_card.setVisibility(View.VISIBLE);
+            TextView store_name = findViewById(R.id.store_name_value);
+            store_name.setText(loggedAccount.store.name);
+            TextView store_address = findViewById(R.id.address_value);
+            store_address.setText(loggedAccount.store.address);
+            TextView store_phoneNumber = findViewById(R.id.phone_value);
+            store_phoneNumber.setText(loggedAccount.store.phoneNumber);
         }
 
-        register_btn.setOnClickListener(new View.OnClickListener() {
+        topUp_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                registerPage.setVisibility(View.VISIBLE);
+
+                EditText input_balance = findViewById(R.id.amount);
                 Response.Listener<String> listener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        try{
-                            JSONObject obj = new JSONObject(response);
+                        try {
+                            JSONObject obj= new JSONObject(response);
+
                             if(obj != null)
                             {
-                                Toast.makeText(AboutMeActivity.this,"Store registered!",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AboutMeActivity.this,
+                                        "Top Up success!",Toast.LENGTH_SHORT).show();
                             }
+                        } catch (JSONException e) {
+                            Toast.makeText(AboutMeActivity.this,
+                                    "Top Up success",Toast.LENGTH_SHORT).show();
 
-                            else{
-                                Toast.makeText(AboutMeActivity.this,"Store failed to registered!",Toast.LENGTH_SHORT).show();
-                            }
-                        }catch (JSONException e){
                             e.printStackTrace();
-                            Toast.makeText(AboutMeActivity.this,"Store failed to registered!",Toast.LENGTH_SHORT).show();
+
                         }
+
                     }
                 };
 
-                Response.ErrorListener errorListener =new Response.ErrorListener() {
+                Response.ErrorListener error_listener = new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(AboutMeActivity.this,"Store failed to registered!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AboutMeActivity.this,
+                                "listener failed!",Toast.LENGTH_SHORT).show();
                     }
                 };
-                CreateStoreRequest createStoreRequest = new CreateStoreRequest(LoginActivity.getLoggedAccount().id,
-                        registerName.getText().toString(),
-                        registerPhone.getText().toString(),registerAddress.getText().toString(),listener,errorListener);
+                TopUpRequest topUpRequest = new TopUpRequest(loggedAccount.id,input_balance.getText().toString(),
+                        listener,error_listener);
+
                 RequestQueue requestQueue = Volley.newRequestQueue(AboutMeActivity.this);
-                requestQueue.add(createStoreRequest);
+                requestQueue.add(topUpRequest);
+            }
+        });
+
+        cancel_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openreg_button.setVisibility(View.VISIBLE);
+                register_card.setVisibility(View.GONE);
+
+            }
+        });
+
+        openreg_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openreg_button.setVisibility(View.GONE);
+                register_card.setVisibility(View.VISIBLE);
+                EditText input_name = findViewById(R.id.Name_register);
+                EditText input_address    = findViewById(R.id.address_register);
+                EditText input_phoneNumber= findViewById(R.id.phone_register);
+                Button regBtn = findViewById(R.id.regBtn);
+
+                regBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Response.Listener<String> listener = new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+
+                                try{
+                                    JSONObject object = new JSONObject(response);
+                                    System.out.println(response);
+                                    if(object != null)
+                                    {
+                                        Toast.makeText(AboutMeActivity.this,"Register success!",
+                                                Toast.LENGTH_LONG).show();
+                                    }
+
+                                    else
+                                    {
+                                        Toast.makeText(AboutMeActivity.this,"Register failed!",
+                                                Toast.LENGTH_LONG).show();
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                    Toast.makeText(AboutMeActivity.this,"Register failed!",
+                                            Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        };
+
+                        Response.ErrorListener errorListener = new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(AboutMeActivity.this,"Register failed!",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        };
+
+                        CreateStoreRequest storeRequest = new CreateStoreRequest(loggedAccount.id,
+                                input_name.getText().toString(),
+                                input_address.getText().toString(),
+                                input_phoneNumber.getText().toString(),
+                                listener,
+                                errorListener);
+                        RequestQueue queue =Volley.newRequestQueue(AboutMeActivity.this);
+                        queue.add(storeRequest);
+                    }
+                });
+
             }
         });
     }

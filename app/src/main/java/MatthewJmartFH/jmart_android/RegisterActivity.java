@@ -42,7 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try{
                             System.out.println(response);
-                            System.out.println(response.length());
+
                             JSONObject obj = new JSONObject(response);
                             if(obj != null)
                             {
