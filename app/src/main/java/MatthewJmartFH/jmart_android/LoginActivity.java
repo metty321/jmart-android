@@ -26,6 +26,11 @@ import org.w3c.dom.Text;
 import MatthewJmartFH.jmart_android.model.Account;
 import MatthewJmartFH.jmart_android.request.LoginRequest;
 
+/**
+ * @author Matthew Eucharist
+ * this class  controls the login process to the REST Controller
+ *
+ */
 public class LoginActivity extends AppCompatActivity {
     private static final Gson gson = new Gson();
     private static Account loggedAccount = null;
@@ -41,35 +46,35 @@ public class LoginActivity extends AppCompatActivity {
     SharedPreferences preferences;
     String email_sharedPreference, pass_sharedPreference;
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        if(email_sharedPreference != null && pass_sharedPreference != null)
-        {
-            Response.Listener<String> listener = new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    try {
-                        JSONObject object = new JSONObject(response);
-                        if(object != null)
-                        {
-                            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                            loggedAccount = gson.fromJson(object.toString(),Account.class);
-                            startActivity(intent);
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            };
-
-            LoginRequest loginRequest = new LoginRequest(email_sharedPreference.toString(),
-                    pass_sharedPreference.toString(),listener,null);
-            RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
-            requestQueue.add(loginRequest);
-        }
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//
+//        if(email_sharedPreference != null && pass_sharedPreference != null)
+//        {
+//            Response.Listener<String> listener = new Response.Listener<String>() {
+//                @Override
+//                public void onResponse(String response) {
+//                    try {
+//                        JSONObject object = new JSONObject(response);
+//                        if(object != null)
+//                        {
+//                            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+//                            loggedAccount = gson.fromJson(object.toString(),Account.class);
+//                            startActivity(intent);
+//                        }
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            };
+//
+//            LoginRequest loginRequest = new LoginRequest(email_sharedPreference.toString(),
+//                    pass_sharedPreference.toString(),listener,null);
+//            RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
+//            requestQueue.add(loginRequest);
+//        }
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,10 +86,10 @@ public class LoginActivity extends AppCompatActivity {
         Button loginbtn =(Button)findViewById(R.id.loginbtn);
         EditText signup = findViewById(R.id.signupnow);
 
-        preferences = getSharedPreferences(PREF_SHARED, Context.MODE_PRIVATE);
-
-        email_sharedPreference = preferences.getString(EMAIL_KEY,null);
-        pass_sharedPreference = preferences.getString(PASS_KEY,null);
+//        preferences = getSharedPreferences(PREF_SHARED, Context.MODE_PRIVATE);
+//
+//        email_sharedPreference = preferences.getString(EMAIL_KEY,null);
+//        pass_sharedPreference = preferences.getString(PASS_KEY,null);
 
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,11 +102,11 @@ public class LoginActivity extends AppCompatActivity {
                             JSONObject obj = new JSONObject(response);
                             if(obj != null)
                             {
-                                SharedPreferences.Editor editor = preferences.edit();
-                                editor.putString(EMAIL_KEY,email.getText().toString());
-                                editor.putString(PASS_KEY,password.getText().toString());
+//                                SharedPreferences.Editor editor = preferences.edit();
+//                                editor.putString(EMAIL_KEY,email.getText().toString());
+//                                editor.putString(PASS_KEY,password.getText().toString());
 
-                                editor.apply();
+//                                editor.apply();
 
                                 Toast.makeText(LoginActivity.this,"Login Success",
                                         Toast.LENGTH_SHORT).show();

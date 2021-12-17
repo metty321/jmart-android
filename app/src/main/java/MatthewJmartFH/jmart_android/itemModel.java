@@ -2,6 +2,10 @@ package MatthewJmartFH.jmart_android;
 
 import MatthewJmartFH.jmart_android.model.ProductCategory;
 
+/**
+ * @author  Matthew Eucharist
+ * this item model is not used
+ */
 public class itemModel {
     public String accountId;
     public String category;

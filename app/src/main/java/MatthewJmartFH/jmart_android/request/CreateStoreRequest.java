@@ -7,6 +7,11 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @Author Matthew Eucharist
+ * This is the class of Create Store Request that controls the Store Creation request
+ * correspond with a particular account id
+ */
 public class CreateStoreRequest extends StringRequest {
     private static final String URL = "http://10.0.2.2:6969/account/%d/registerStore";
     private  static Map<String,String> params = new HashMap<>();

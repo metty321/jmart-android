@@ -42,9 +42,12 @@ import static MatthewJmartFH.jmart_android.ProductFragment.products;
 import MatthewJmartFH.jmart_android.request.RequestFactory;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link FilterFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * @author Matthew Eucharist
+ *
+ * this fragment is used to filter the list view in product fragment
+ *
+ *
+ *
  */
 public class FilterFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match

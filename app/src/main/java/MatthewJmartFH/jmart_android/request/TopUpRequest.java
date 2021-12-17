@@ -7,6 +7,11 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @Author Matthew Eucharist
+ * This is the class manages all activites related to Top Up from REST Controller
+ * correspond with a particular account id
+ */
 public class TopUpRequest extends StringRequest {
     private static  final String URL = "http://10.0.2.2:6969/account/%d/topUp";
     private static Map<String,String> params = new HashMap<>();

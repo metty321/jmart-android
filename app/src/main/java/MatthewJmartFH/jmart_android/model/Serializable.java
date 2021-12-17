@@ -1,6 +1,10 @@
 package MatthewJmartFH.jmart_android.model;
 
 import java.util.HashMap;
+/**
+ * @Author Matthew Eucharist
+ * This is the model class of Serializable class
+ */
 
 public class Serializable {
 

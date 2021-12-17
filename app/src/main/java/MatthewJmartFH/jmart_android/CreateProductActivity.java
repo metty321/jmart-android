@@ -25,6 +25,11 @@ import org.json.JSONObject;
 import MatthewJmartFH.jmart_android.model.ProductCategory;
 import MatthewJmartFH.jmart_android.request.CreateProductRequest;
 
+/**
+ * @Author Matthew Eucharist
+ * This class manages the creation of product
+ * correspond with a particular account id
+ */
 public class CreateProductActivity extends AppCompatActivity {
     private Spinner spinner;
     private Spinner spinner_2;

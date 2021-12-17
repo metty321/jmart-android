@@ -26,6 +26,11 @@ import org.json.JSONObject;
 import MatthewJmartFH.jmart_android.model.Product;
 import MatthewJmartFH.jmart_android.request.CreatePaymentRequest;
 
+/**
+ * @author Matthew Eucharist
+ * this class  controls the payment process to the REST Controller
+ *
+ */
 public class PaymentActivity extends AppCompatActivity {
 
     @Override

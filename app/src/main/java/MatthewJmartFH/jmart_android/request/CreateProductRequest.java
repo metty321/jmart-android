@@ -9,6 +9,10 @@ import java.util.Map;
 
 import MatthewJmartFH.jmart_android.LoginActivity;
 
+/**
+ * @Author Matthew Eucharist
+ * This is the class of Create Product Request that controls the Product Creation request
+ */
 public class CreateProductRequest extends StringRequest {
     private static final String URL = "http://10.0.2.2:6969/product/create";
     private static  Map<String,String> params = new HashMap<>();

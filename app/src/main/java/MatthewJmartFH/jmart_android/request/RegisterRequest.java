@@ -6,6 +6,11 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @Author Matthew Eucharist
+ * This is the class of Register Request that controls the account register process
+ *
+ */
 public class RegisterRequest extends StringRequest {
     public static final String URL = "http://10.0.2.2:6969/account/register";
     private  final  Map<String,String>  params;

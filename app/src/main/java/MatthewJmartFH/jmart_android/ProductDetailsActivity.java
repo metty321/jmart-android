@@ -8,6 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * @author Matthew Eucharist
+ * this class  displays the details of the product from the listview in product fragment
+ *
+ */
 public class ProductDetailsActivity extends AppCompatActivity {
 
     @Override

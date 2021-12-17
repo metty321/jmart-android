@@ -8,6 +8,10 @@ public class Payment extends Invoice {
     public int productCount;
     public Shipment shipment;
 
+    /**
+     * @Author Matthew Eucharist
+     * This is the model class of Payment class
+     */
     public Payment(int buyerId,int productId,int productCount
             ,Shipment shipment)
     {

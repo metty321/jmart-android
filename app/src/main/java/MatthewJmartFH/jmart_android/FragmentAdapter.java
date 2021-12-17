@@ -7,6 +7,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+/**
+ * @author Matthew Eucharist
+ *
+ * this class manages to create view of the fragment
+ */
 public class FragmentAdapter extends FragmentStateAdapter{
 
 

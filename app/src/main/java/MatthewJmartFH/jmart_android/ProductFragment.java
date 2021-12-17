@@ -32,9 +32,9 @@ import MatthewJmartFH.jmart_android.request.RequestFactory;
 
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProductFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * @author Matthew Eucharist
+ *
+ *this class shows the listview of product
  *
  */
 public class ProductFragment extends Fragment  {

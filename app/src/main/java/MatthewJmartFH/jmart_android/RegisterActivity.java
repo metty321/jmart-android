@@ -22,6 +22,11 @@ import MatthewJmartFH.jmart_android.model.Account;
 import MatthewJmartFH.jmart_android.request.LoginRequest;
 import MatthewJmartFH.jmart_android.request.RegisterRequest;
 
+/**
+ * @author Matthew Eucharist
+ * this class  controls the register process to the REST Controller
+ *
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     @Override

@@ -21,6 +21,11 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * @author Matthew Eucharist
+ * this class  controls the creation of fragment and action bar
+ *
+ */
 public class MainActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager2 viewPager2;

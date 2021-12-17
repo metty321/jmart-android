@@ -2,6 +2,10 @@ package MatthewJmartFH.jmart_android.model;
 
 import java.util.Date;
 
+/**
+ * @author  Matthew Eucharist
+ * This is the model class of Invoice class from Invoice Class in back-end
+ */
 public abstract class Invoice extends Serializable{
 
     public enum Status {WAITING_CONFIRMATION, CANCELLED, ON_PROGRESS, ON_DELIVERY,

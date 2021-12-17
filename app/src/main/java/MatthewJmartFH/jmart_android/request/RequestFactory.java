@@ -8,7 +8,11 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * @Author Matthew Eucharist
+ * This class controls all activity related to GET Method from REST Controller
+ *
+ */
 public class RequestFactory {
     private static final String URL_FORMAT_ID = "http://10.0.2.2:6969/%s/%d";
     private static final String URL_FORMAT_PAGE = "http://10.0.2.2:6969/%s/page?page=%s&pageSize=%s";

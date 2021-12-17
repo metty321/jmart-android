@@ -6,7 +6,10 @@ import com.android.volley.Request;
 
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * @Author Matthew Eucharist
+ * This is the class of Payment Request that controls the Payment Creation request
+ */
 public class CreatePaymentRequest extends StringRequest {
     private static final String URL = "http://10.0.2.2:6969/payment/create";
     private final Map<String,String> params = new HashMap<>();

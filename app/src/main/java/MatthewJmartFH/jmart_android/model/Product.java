@@ -1,5 +1,9 @@
 package MatthewJmartFH.jmart_android.model;
 
+/**
+ * @Author Matthew Eucharist
+ * This is the model class of Product class
+ */
 public class Product extends Serializable {
     public  int accountId;
     public  ProductCategory category;
