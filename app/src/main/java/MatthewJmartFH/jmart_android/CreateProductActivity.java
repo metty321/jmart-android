@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
@@ -29,7 +31,7 @@ public class CreateProductActivity extends AppCompatActivity {
     private boolean conditionUsed;
     byte chosen_shipmentPlan;
     ProductCategory productCategory;
-    private final String[] ProductCategory ={"ART CRAFT","AUTOMOTIVE","BOOK","CARPENTRY","COSMETICS","ELECTRONIC",
+    private final String[] ProductCategory ={"ART","CRAFT","AUTOMOTIVE","BOOK","CARPENTRY","COSMETICS","ELECTRONIC",
     "FASHION","FNB","FURNITURE","GADGET","GAMING","HEALTHCARE","JEWELRY"};
     private final String[] shipmentPlans = {"INSTANT","KARGO","NEXT DAY","REGULER","SAME DAY"};
     @Override
@@ -37,47 +39,73 @@ public class CreateProductActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_product);
+
         EditText CreatedProduct  = findViewById(R.id.name_3);
         EditText productWeight   = findViewById(R.id.weight);
+        EditText productPrice    = findViewById(R.id.Price);
         EditText productDiscount = findViewById(R.id.discount);
-        RadioButton new_Btn      = findViewById(R.id.new_tag_2);
-        RadioButton used_Btn     = findViewById(R.id.used_tag_2);
+        CheckBox used_check = findViewById(R.id.used_check);
+        CheckBox new_check  = findViewById(R.id.new_check);
+
         spinner = (Spinner) findViewById(R.id.spinner_category_2);
         spinner_2 = (Spinner) findViewById(R.id.shipment_plans);
+
         final ArrayAdapter<String>arrayAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item,ProductCategory);
         spinner.setAdapter(arrayAdapter);
         final ArrayAdapter<String>arrayAdapter2 = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item,shipmentPlans);
+                android.R.layout.simple_spinner_dropdown_item,shipmentPlans);
+        spinner_2.setAdapter(arrayAdapter2);
         Button create_btn        = findViewById(R.id.create_btn);
+        Button cancel_btn        = findViewById(R.id.cancel_btn);
+
+        new_check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    used_check.setChecked(false);
+                }
+            }
+        });
+
+        used_check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    new_check.setChecked(false);
+                }
+            }
+        });
 
 
         //Action When the create button is clicked
         create_btn.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            conditionUsed = used_Btn.isChecked();
+            conditionUsed = used_check.isChecked();
             chosen_shipmentPlan = shipmentplanChecker(spinner_2);
-            productCategory = ProductCategoryChecker(spinner);
+
             Response.Listener<String>listener = new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
+                    System.out.println(response);
                     try {
+
                         JSONObject obj = new JSONObject(response);
                         if(obj != null)
                         {
-                            Toast.makeText(CreateProductActivity.this,"Store registration succcess!",
+                            Toast.makeText(CreateProductActivity.this,"Product registration success!",
                                     Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(CreateProductActivity.this,MainActivity.class);
                             startActivity(intent);
                         }
                         else{
-                            Toast.makeText(CreateProductActivity.this,"Store registration failed!",
+                            Toast.makeText(CreateProductActivity.this,"Product registration failed!",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }catch (JSONException e){
                         e.printStackTrace();
-                        Toast.makeText(CreateProductActivity.this,"Store registration failed!",
+                        Toast.makeText(CreateProductActivity.this,"Product registration failed!",
                                 Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -86,17 +114,17 @@ public class CreateProductActivity extends AppCompatActivity {
             Response.ErrorListener errorListener = new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(CreateProductActivity.this,"Store registration failed!",
+                    Toast.makeText(CreateProductActivity.this,"Listener failed!",
                             Toast.LENGTH_SHORT).show();
                 }
             };
 
             CreateProductRequest productRequest = new CreateProductRequest(
-                    LoginActivity.getLoggedAccount().id,
-                    CreatedProduct.getText().toString(),
+                    CreatedProduct.getText().toString(),productPrice.getText().toString(),
                     productWeight.getText().toString(),
+                    String.valueOf(new_check.isChecked()),
                     productDiscount.getText().toString(),
-                    String.valueOf(productCategory),
+                    spinner.getSelectedItem().toString(),
                     String.valueOf(chosen_shipmentPlan),
                     listener,errorListener);
 
@@ -115,7 +143,7 @@ public class CreateProductActivity extends AppCompatActivity {
         }
         if(shipmentplan.getSelectedItem()=="KARGO")
         {
-            return (byte)00000010;
+            return (byte)00010000;
         }
         if(shipmentplan.getSelectedItem()=="NEXT DAY")
         {
@@ -123,7 +151,7 @@ public class CreateProductActivity extends AppCompatActivity {
         }
         if(shipmentplan.getSelectedItem()=="REGULER")
         {
-            return (byte)00000101;
+            return (byte)00001000;
         }
         if(shipmentplan.getSelectedItem()=="SAME DAY")
         {
@@ -133,31 +161,7 @@ public class CreateProductActivity extends AppCompatActivity {
         return 0;
     }
 
-    protected ProductCategory ProductCategoryChecker (Spinner productcategory)
-    {
-        if(productcategory.getSelectedItem()=="BOOK")
-        {
-            return MatthewJmartFH.jmart_android.model.ProductCategory.BOOK;
-        }
-        if(productcategory.getSelectedItem()=="ART CRAFT")
-        {
-            return MatthewJmartFH.jmart_android.model.ProductCategory.ART_CRAFT;
-        }
-        if(productcategory.getSelectedItem()=="AUTOMOTIVE")
-        {
-            return MatthewJmartFH.jmart_android.model.ProductCategory.AUTOMOTIVE;
-        }
-        if(productcategory.getSelectedItem()=="CARPENTRY")
-        {
-            return MatthewJmartFH.jmart_android.model.ProductCategory.CARPENTRY;
-        }
-        if(productcategory.getSelectedItem()=="COSMETICS")
-        {
-            return MatthewJmartFH.jmart_android.model.ProductCategory.COSMETICS;
-        }
 
-        return null;
-    }
 
 
 }

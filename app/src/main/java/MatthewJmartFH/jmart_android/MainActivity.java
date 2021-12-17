@@ -53,6 +53,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_header,menu);
+
+        if(getLoggedAccount().store == null)
+        {
+            menu.findItem(R.id.newtab).setVisible(false);
+        }
         return true;
     }
 
@@ -64,11 +69,37 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(this,AboutMeActivity.class);
                 this.startActivity(intent);
                 break;
+            case R.id.newtab:
+                Intent intent_2 = new Intent(this,CreateProductActivity.class);
+                this.startActivity(intent_2);
+                break;
             default:
                 super.onOptionsItemSelected(item);
         }
         return true;
     }
 
+    public String loadJSONFromAsset() {
+        String json = null;
+        try {
+            InputStream is = getAssets().open("randomProductList.json");
 
+            int size = is.available();
+
+            byte[] buffer = new byte[size];
+
+            is.read(buffer);
+
+            is.close();
+
+            json = new String(buffer, "UTF-8");
+
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+
+    }
 }

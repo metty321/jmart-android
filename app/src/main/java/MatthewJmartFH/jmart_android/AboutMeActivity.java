@@ -144,6 +144,7 @@ public class AboutMeActivity extends AppCompatActivity {
                                 try{
                                     JSONObject object = new JSONObject(response);
                                     System.out.println(response);
+
                                     if(object != null)
                                     {
                                         Toast.makeText(AboutMeActivity.this,"Register success!",

@@ -13,17 +13,36 @@
         android:theme="@style/Theme.Jmartandroid"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".PaymentActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Jmartandroid.NoActionBar"/>
+        <activity
+            android:name=".ProductDetailsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Jmartandroid.NoActionBar"/>
+        <activity
             android:name=".AboutMeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Jmartandroid.NoActionBar"/>
+        <activity
+            android:name=".CreateProductActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Jmartandroid.NoActionBar"/>
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustNothing"/>
         <activity
             android:name=".RegisterActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustNothing"
+            android:theme="@style/Theme.Jmartandroid.NoActionBar"/>
         <activity
             android:name=".LoginActivity"
-            android:exported="true">
+            android:windowSoftInputMode="adjustNothing"
+            android:exported="true"
+            android:theme="@style/Theme.Jmartandroid.NoActionBar"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

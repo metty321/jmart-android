@@ -1,66 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     tools:context=".RegisterActivity"
     android:layout_width="match_parent" >
 
-    <TextView
-        android:id="@+id/signin2"
+    <View
+        android:id="@+id/view3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign-in"
-        android:textColor="@color/white"
-        android:textSize="35dp"
-        android:textStyle="bold"
-        android:layout_margin="50dp"
-        android:gravity="center_vertical"/>
+        android:layout_height="100dp"
+        android:background="@drawable/ic_block"
+        android:rotationY="74"
+        android:scaleX="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <EditText
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/name2"
-        android:layout_below="@id/signin2"
-        android:hint="Name"
-        android:textColor="@color/black"
-        android:textColorHint="#b3b3b3"
-        android:layout_margin="10dp"
+        android:layout_height="100dp"
+        android:background="@drawable/ic_block3"
+        android:rotationY="112"
+        android:scaleX="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        android:padding="20dp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/email2"
-        android:layout_below="@id/name2"
-        android:hint="Email"
-        android:textColor="@color/black"
-        android:textColorHint="#b3b3b3"
-        android:layout_margin="10dp"
-        android:padding="20dp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/password2"
-        android:layout_below="@id/email2"
-        android:hint="Password"
-        android:textColor="@color/black"
-        android:textColorHint="#b3b3b3"
-        android:layout_margin="10dp"
-        android:padding="20dp"
-        android:inputType="textPassword"/>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="300dp"
+        android:layout_height="550dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/regbtn"
-        android:layout_below="@id/password2"
-        android:text="Register"
-        android:textColor="@color/black"
-        android:backgroundTint="#e6e6e6"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"
-        />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
 
-</RelativeLayout>
+            <TextView
+                android:id="@+id/signin2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                android:gravity="center_vertical"
+                android:text="Sign-in"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="35dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/name2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/signin2"
+                android:layout_margin="10dp"
+                android:hint="Name"
+                android:padding="20dp"
+                android:textColor="@color/black"
+
+                android:textColorHint="#b3b3b3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.18"
+                tools:layout_editor_absoluteX="10dp" />
+
+            <EditText
+                android:id="@+id/email2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name2"
+                android:layout_margin="10dp"
+                android:hint="Email"
+                android:padding="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="#b3b3b3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.44"
+                tools:layout_editor_absoluteX="10dp" />
+
+            <EditText
+                android:id="@+id/password2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/email2"
+                android:layout_margin="10dp"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="#b3b3b3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/name2"
+                app:layout_constraintVertical_bias="0.61"
+                tools:layout_editor_absoluteX="10dp" />
+
+            <Button
+                android:id="@+id/regbtn"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/password2"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="10dp"
+                android:backgroundTint="@android:color/holo_blue_dark"
+                android:text="Register"
+
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.96" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

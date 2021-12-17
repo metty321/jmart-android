@@ -18,9 +18,9 @@
         android:layout_marginStart="16dp"
 
         android:layout_marginBottom="17dp"
-        android:backgroundTint="#e6e6e6"
+
         android:text="PREV"
-        android:textColor="@color/black"
+
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,9 +33,9 @@
         android:layout_height="40dp"
         android:layout_marginStart="112dp"
         android:layout_marginBottom="17dp"
-        android:backgroundTint="#e6e6e6"
+
         android:text="NEXT"
-        android:textColor="@color/black"
+
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,9 +49,9 @@
         android:layout_height="40dp"
 
         android:layout_marginBottom="17dp"
-        android:backgroundTint="#e6e6e6"
+
         android:text="GO"
-        android:textColor="@color/black"
+
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,8 +83,10 @@
         android:layout_width="395dp"
         android:layout_height="634dp"
         android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/page"
-        tools:layout_editor_absoluteX="8dp"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

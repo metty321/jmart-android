@@ -17,6 +17,7 @@
 
         <!-- TODO: Update blank fragment layout -->
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name_filter_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name"
@@ -41,6 +42,7 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:hint="Lowest Price"
+            android:id="@+id/low_price_value"
             android:inputType="number" />
 
 
@@ -63,6 +65,7 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:hint="Highest Price"
+            android:id="@+id/high_price_value"
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/name_filter" />
@@ -100,14 +103,12 @@
             android:id="@+id/new_tag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
             android:text="@string/new_tag" />
 
         <RadioButton
             android:id="@+id/used_tag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
             android:text="@string/used_tag" />
 
     </RadioGroup>
@@ -143,9 +144,9 @@
         android:id="@+id/apply_tbtn"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:backgroundTint="#e6e6e6"
+
         android:text="APPLY"
-        android:textColor="@color/black"
+
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -158,9 +159,9 @@
         android:id="@+id/Clear_btn"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:backgroundTint="#e6e6e6"
+
         android:text="CLEAR"
-        android:textColor="@color/black"
+
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
